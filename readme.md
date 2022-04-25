@@ -6,9 +6,14 @@
 
 ```pip3 install -r requirements.txt```
 
--I did 2 types of preprocessing before applying reinforcement learning
+-Do 2 types of preprocessing before applying reinforcement learning
 
     -converting the rgb frames to gray
 
     -frame stacking
 
+-Use the PPO algorithm
+
+-To view the tensorboard statistics run from logs/PPO_20
+
+```tensorboard --logdir=.```

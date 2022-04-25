@@ -7,3 +7,26 @@ __pycache__
 .env
 super_mario_venv/
 venv/
+
+# Models
+saved_models/
+
+# Logs
+logs/
+
+# macOS
+._*
+.DS_Store
+.fseventsd
+.Spotlight-V100
+
+# Windows
+Thumbs.db*
+ehthumbs*.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Visual Studio
+.vscode/
+.history/
+*.code-workspace
