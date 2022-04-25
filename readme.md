@@ -5,3 +5,10 @@
 -Install the dependencies from the requirements.txt.
 
 ```pip3 install -r requirements.txt```
+
+-I did 2 types of preprocessing before applying reinforcement learning
+
+    -converting the rgb frames to gray
+
+    -frame stacking
+
