@@ -38,7 +38,7 @@ class TrainAndLoggingCallback(BaseCallback):
 CHECKPOINT_DIR =  './saved_models/'
 LOG_DIR = './logs/'
 #saves models every 10k steps
-callback = TrainAndLoggingCallback(check_freq=1000,save_path=CHECKPOINT_DIR)
+callback = TrainAndLoggingCallback(check_freq=5000,save_path=CHECKPOINT_DIR)
 #AI model initialised, CnnPolicy(convolutional neural networks) is very efficient at image processing
 
 env = gsmb.make('SuperMarioBros-v0')
@@ -47,8 +47,8 @@ env = GrayScaleObservation(env, keep_dim=True)
 env = DummyVecEnv([lambda: env])
 env = VecFrameStack(env, 4, channels_order='last')#last few frames will be in the stack to use
 
-state = env.reset()
-print("state.shape: ",state.shape)
+# state = env.reset()
+# print("state.shape: ",state.shape)
 #==================
 #this code shows the stack 
 # for step in range(5):
@@ -67,18 +67,37 @@ print("state.shape: ",state.shape)
 # print(SIMPLE_MOVEMENT)
 # print(env.step(env.action_space.sample()))
 # exit()
-model = PPO('CnnPolicy', env, verbose=1, tensorboard_log=LOG_DIR, learning_rate=0.000001, n_steps=1024)
-model.learn(total_timesteps=1025,callback=callback)#add callback=callback to save models
-exit()
 
-done = True
-for step in range(100000):
-    if done:
-        env.reset()
-    state, reward, done, info = env.step(env.action_space.sample())
-    env.render()
-env.close
+# train the model and save it=====================
+# state = env.reset()
+# print("state.shape: ",state.shape)
+# model = PPO('CnnPolicy', env, verbose=1, tensorboard_log=LOG_DIR, learning_rate=0.000001, n_steps=1024)
+# model.learn(total_timesteps=1025,callback=callback)#add callback=callback to save models
+# ============================================
 
 
+def run():
+    # Load the model and use it===============
+    model = PPO.load('./saved_models/best_model_2000')
+    state = env.reset()
+    while True:
+        action, _ = model.predict(state)
+        state, reward, done, info = env.step(action)
+        env.render()
 
-print("done!")
+    # ============================================
+
+if __name__ == '__main__':
+    run()
+
+# done = True
+# for step in range(100000):
+#     if done:
+#         env.reset()
+#     state, reward, done, info = env.step(env.action_space.sample())
+#     env.render()
+# env.close
+
+
+
+# print("done!")
