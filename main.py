@@ -49,8 +49,8 @@ env = VecFrameStack(env, 4, channels_order='last')#last few frames will be in th
 
 # state = env.reset()
 # print("state.shape: ",state.shape)
-#==================
-#this code shows the stack 
+# #==================
+# #this code shows the stack 
 # for step in range(5):
 #     state, reward, done, info = env.step([5])
 # print("state.shape: ",state.shape)
@@ -60,6 +60,7 @@ env = VecFrameStack(env, 4, channels_order='last')#last few frames will be in th
 #     plt.imshow(state[0][:,:,idx])
 # # plt.imshow(state[0])
 # plt.show()
+# exit()
 #================
 # plt.imshow(state[0])
 # plt.show()

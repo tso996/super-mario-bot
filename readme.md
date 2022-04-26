@@ -1,5 +1,7 @@
 -This project uses the OpenAI Gym. https://gym.openai.com/
 
+![ Alt text](name-of-gif-file. gif) / ! [](demo. gif)
+
 -It also uses the nes-py to use the controller to play the game.
 
 -Install the dependencies from the requirements.txt.
